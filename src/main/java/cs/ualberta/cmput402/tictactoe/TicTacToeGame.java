@@ -12,12 +12,15 @@ import java.util.Scanner;
 public class TicTacToeGame {
 
     private Board board;
-    private int ties = 0;
-    private int playerXWins = 0;
-    private int playerOWins = 0;
+    private int ties;
+    private int playerXWins;
+    private int playerOWins;
 
     public TicTacToeGame(){
         board = new Board();
+        ties = 0;
+        playerXWins = 0;
+        playerOWins = 0;
     }
 
     public void promptNextPlayer(){
@@ -30,6 +33,16 @@ public class TicTacToeGame {
                 break;
 
         }
+    }
+
+    public void printScoreBoard(){
+        System.out.println("\n-------------------------------------------");
+        System.out.println("S C O R E B O A R D");
+        System.out.println("-------------------------------------------");
+        System.out.println(String.format("X Wins: %d", this.playerXWins));
+        System.out.println(String.format("O Wins: %d", this.playerOWins));
+        System.out.println(String.format("Ties: %d", this.ties));
+        System.out.println("-------------------------------------------");
     }
 
     public void playGame(){
@@ -64,6 +77,8 @@ public class TicTacToeGame {
             else if (winner == Player.O) this.playerOWins += 1;
         	System.out.println("Player " + winner + " has won the game!");
         }
+
+        this.printScoreBoard();
     }
 
     public static void main(String args[]){
