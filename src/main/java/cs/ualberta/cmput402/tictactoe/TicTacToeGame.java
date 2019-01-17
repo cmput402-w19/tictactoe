@@ -12,6 +12,9 @@ import java.util.Scanner;
 public class TicTacToeGame {
 
     private Board board;
+    private int ties = 0;
+    private int playerXWins = 0;
+    private int playerOWins = 0;
 
     public TicTacToeGame(){
         board = new Board();
@@ -51,11 +54,15 @@ public class TicTacToeGame {
         }
 
         board.printBoard();
-        
-        if(board.getWinner() == null) {
+
+        Player winner = board.getWinner();
+        if(winner == null) {
+            this.ties += 1;
         	System.out.println("Tie Game!");
         }else {
-        	System.out.println("Player " + board.getWinner() + " has won the game!");
+            if (winner == Player.X) this.playerXWins += 1;
+            else if (winner == Player.O) this.playerOWins += 1;
+        	System.out.println("Player " + winner + " has won the game!");
         }
     }
 
