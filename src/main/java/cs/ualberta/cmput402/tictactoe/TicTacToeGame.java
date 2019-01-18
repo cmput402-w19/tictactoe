@@ -45,6 +45,10 @@ public class TicTacToeGame {
         System.out.println("-------------------------------------------");
     }
 
+    public void resetGame(){
+        board = new Board();
+    }
+
     public void playGame(){
         Scanner keyboardScanner = new Scanner(System.in);
 
@@ -78,11 +82,31 @@ public class TicTacToeGame {
         	System.out.println("Player " + winner + " has won the game!");
         }
 
-        this.printScoreBoard();
     }
 
     public static void main(String args[]){
         TicTacToeGame game = new TicTacToeGame();
-        game.playGame();
+        boolean play = true;
+
+        while (play){
+            game.playGame();
+
+            String response = "";
+            while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")){
+                Scanner input = new Scanner(System.in);
+                System.out.print("Would you like to play again (y/n): ");
+                response = input.nextLine();
+            }
+
+            if (response.equalsIgnoreCase("n")){
+                play = false;
+                game.printScoreBoard();
+            }
+            else{
+                game.resetGame();
+            }
+
+        }
+
     }
 }
