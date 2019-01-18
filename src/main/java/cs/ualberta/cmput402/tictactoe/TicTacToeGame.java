@@ -12,9 +12,15 @@ import java.util.Scanner;
 public class TicTacToeGame {
 
     private Board board;
+    private int ties;
+    private int playerXWins;
+    private int playerOWins;
 
     public TicTacToeGame(){
         board = new Board();
+        ties = 0;
+        playerXWins = 0;
+        playerOWins = 0;
     }
 
     public void promptNextPlayer(){
@@ -29,10 +35,25 @@ public class TicTacToeGame {
         }
     }
 
+    public void printScoreBoard(){
+        System.out.println("\n-------------------------------------------");
+        System.out.println("S C O R E B O A R D");
+        System.out.println("-------------------------------------------");
+        System.out.println(String.format("X Wins: %d", this.playerXWins));
+        System.out.println(String.format("O Wins: %d", this.playerOWins));
+        System.out.println(String.format("Ties: %d", this.ties));
+        System.out.println("-------------------------------------------");
+    }
+
     public void playGame(){
         Scanner keyboardScanner = new Scanner(System.in);
 
         while (board.getWinner() == null){
+        	
+            if(board.isFull()) {
+            	break;
+            }
+            
             board.printBoard();
             promptNextPlayer();
             String line = keyboardScanner.nextLine();
@@ -46,7 +67,18 @@ public class TicTacToeGame {
         }
 
         board.printBoard();
-        System.out.println("Player " + board.getWinner() + " has won the game!");
+
+        Player winner = board.getWinner();
+        if(winner == null) {
+            this.ties += 1;
+        	System.out.println("Tie Game!");
+        }else {
+            if (winner == Player.X) this.playerXWins += 1;
+            else if (winner == Player.O) this.playerOWins += 1;
+        	System.out.println("Player " + winner + " has won the game!");
+        }
+
+        this.printScoreBoard();
     }
 
     public static void main(String args[]){
