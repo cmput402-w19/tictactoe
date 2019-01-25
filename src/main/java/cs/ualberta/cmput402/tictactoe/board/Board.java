@@ -102,9 +102,9 @@ public class Board {
     }
     
     public boolean isFull() {
-    	for(int i = 0; i < 3; i++) {
-    		for(int j = 0; j < 3; j++) {
-    			if(isSquareAvailable(i,j)) {
+    	for(int row = 0; row < 3; row++) {
+    		for(int column = 0; column < 3; column++) {
+    			if(isSquareAvailable(row,column)) {
     				return false;
     			}
     		}
