@@ -73,6 +73,11 @@ public class TicTacToeGame {
         board.printBoard();
 
         Player winner = board.getWinner();
+
+        // Check who the winner is and print their corresponding winning message.
+        // If the winner is player X, increment X's score.
+        // If the winner is player O, increment O's score.
+        // Otherwise increment the number of ties.
         if(winner == null) {
             this.ties += 1;
         	System.out.println("Tie Game!");
