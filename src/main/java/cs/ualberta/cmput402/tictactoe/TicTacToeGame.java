@@ -13,8 +13,8 @@ public class TicTacToeGame {
 
     private Board board;
     private int ties;
-    private int playerXWins;
-    private int playerOWins;
+    private int NumOfPlayerXWins;
+    private int NumOfPlayerOWins;
 
     public TicTacToeGame(){
         board = new Board();
@@ -39,8 +39,8 @@ public class TicTacToeGame {
         System.out.println("\n-------------------------------------------");
         System.out.println("S C O R E B O A R D");
         System.out.println("-------------------------------------------");
-        System.out.println(String.format("X Wins: %d", this.playerXWins));
-        System.out.println(String.format("O Wins: %d", this.playerOWins));
+        System.out.println(String.format("X Wins: %d", this.NumOfPlayerXWins));
+        System.out.println(String.format("O Wins: %d", this.NumOfPlayerOWins));
         System.out.println(String.format("Ties: %d", this.ties));
         System.out.println("-------------------------------------------");
     }
@@ -77,8 +77,8 @@ public class TicTacToeGame {
             this.ties += 1;
         	System.out.println("Tie Game!");
         }else {
-            if (winner == Player.X) this.playerXWins += 1;
-            else if (winner == Player.O) this.playerOWins += 1;
+            if (winner == Player.X) this.NumOfPlayerXWins += 1;
+            else if (winner == Player.O) this.NumOfPlayerOWins += 1;
         	System.out.println("Player " + winner + " has won the game!");
         }
 
