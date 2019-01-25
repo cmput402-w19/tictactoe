@@ -19,8 +19,8 @@ public class TicTacToeGame {
     public TicTacToeGame(){
         board = new Board();
         ties = 0;
-        playerXWins = 0;
-        playerOWins = 0;
+        NumOfPlayerXWins = 0;
+        NumOfPlayerOWins = 0;
     }
 
     public void promptNextPlayer(){
