@@ -16,15 +16,15 @@ public class TicTacToeGame {
     private int NumOfPlayerXWins;
     private int NumOfPlayerOWins;
 
-    public TicTacToeGame(){
+    public TicTacToeGame() {
         board = new Board();
         ties = 0;
         NumOfPlayerXWins = 0;
         NumOfPlayerOWins = 0;
     }
 
-    public void promptNextPlayer(){
-        switch(board.getCurrentPlayer()){
+    public void promptNextPlayer() {
+        switch(board.getCurrentPlayer()) {
             case X:
                 System.out.println("It's player " + board.getSymbol(board.getCurrentPlayer()) + "'s turn. Please enter the coordinates of your next move as x,y: ");
                 break;
@@ -35,7 +35,7 @@ public class TicTacToeGame {
         }
     }
 
-    public void printScoreBoard(){
+    public void printScoreBoard() {
         System.out.println("\n-------------------------------------------");
         System.out.println("S C O R E B O A R D");
         System.out.println("-------------------------------------------");
@@ -45,7 +45,7 @@ public class TicTacToeGame {
         System.out.println("-------------------------------------------");
     }
 
-    public void resetGame(){
+    public void resetGame() {
         board = new Board();
     }
     
@@ -58,22 +58,22 @@ public class TicTacToeGame {
         // If the winner is player X, increment X's score.
         // If the winner is player O, increment O's score.
         // Otherwise increment the number of ties.
-        if(winner == null) {
+        if (winner == null) {
             this.ties += 1;
         	System.out.println("Tie Game!");
-        }else {
+        } else {
             if (winner == Player.X) this.NumOfPlayerXWins += 1;
             else if (winner == Player.O) this.NumOfPlayerOWins += 1;
         	System.out.println("Player " + winner + " has won the game!");
         }
     }
 
-    public void playGame(){
+    public void playGame() {
         Scanner keyboardScanner = new Scanner(System.in);
 
-        while (board.getWinner() == null){
+        while (board.getWinner() == null) {
         	
-            if(board.isFull()) {
+            if (board.isFull()) {
             	break;
             }
             
@@ -92,30 +92,27 @@ public class TicTacToeGame {
         resolveGame();
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         TicTacToeGame game = new TicTacToeGame();
         boolean play = true;
 
-        while (play){
+        while (play) {
             game.playGame();
 
             // Error check value till response is either y or n
             String response = "";
-            while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")){
+            while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")) {
                 Scanner input = new Scanner(System.in);
                 System.out.print("Would you like to play again (y/n): ");
                 response = input.nextLine();
             }
 
-            if (response.equalsIgnoreCase("n")){
+            if (response.equalsIgnoreCase("n")) {
                 play = false;
                 game.printScoreBoard();
-            }
-            else{
+            } else {
                 game.resetGame();
             }
-
         }
-
     }
 }
