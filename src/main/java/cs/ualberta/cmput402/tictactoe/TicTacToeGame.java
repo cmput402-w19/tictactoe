@@ -96,6 +96,7 @@ public class TicTacToeGame {
         while (play){
             game.playGame();
 
+            // Error check value till response is either y or n
             String response = "";
             while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")){
                 Scanner input = new Scanner(System.in);
