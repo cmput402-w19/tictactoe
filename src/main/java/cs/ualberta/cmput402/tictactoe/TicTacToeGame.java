@@ -48,6 +48,25 @@ public class TicTacToeGame {
     public void resetGame(){
         board = new Board();
     }
+    
+    private void resolveGame() {
+        board.printBoard();
+
+        Player winner = board.getWinner();
+
+        // Check who the winner is and print their corresponding winning message.
+        // If the winner is player X, increment X's score.
+        // If the winner is player O, increment O's score.
+        // Otherwise increment the number of ties.
+        if(winner == null) {
+            this.ties += 1;
+        	System.out.println("Tie Game!");
+        }else {
+            if (winner == Player.X) this.NumOfPlayerXWins += 1;
+            else if (winner == Player.O) this.NumOfPlayerOWins += 1;
+        	System.out.println("Player " + winner + " has won the game!");
+        }
+    }
 
     public void playGame(){
         Scanner keyboardScanner = new Scanner(System.in);
@@ -69,24 +88,8 @@ public class TicTacToeGame {
                 promptNextPlayer();
             }
         }
-
-        board.printBoard();
-
-        Player winner = board.getWinner();
-
-        // Check who the winner is and print their corresponding winning message.
-        // If the winner is player X, increment X's score.
-        // If the winner is player O, increment O's score.
-        // Otherwise increment the number of ties.
-        if(winner == null) {
-            this.ties += 1;
-        	System.out.println("Tie Game!");
-        }else {
-            if (winner == Player.X) this.NumOfPlayerXWins += 1;
-            else if (winner == Player.O) this.NumOfPlayerOWins += 1;
-        	System.out.println("Player " + winner + " has won the game!");
-        }
-
+        
+        resolveGame();
     }
 
     public static void main(String args[]){
