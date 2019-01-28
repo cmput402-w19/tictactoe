@@ -101,6 +101,18 @@ public class Board {
         return (col == 0 && row == 2) || (col == 1 && row == 1) || (col == 2 & row == 0);
     }
 
+    // Checks if each till is filled
+    public boolean isFull() {
+    	for(int row = 0; row < 3; row++) {
+    		for(int column = 0; column < 3; column++) {
+    			if(isSquareAvailable(row,column)) {
+    				return false;
+    			}
+    		}
+    	}
+    	return true;
+    }
+
     public void printBoard(){
         for(int i  = 0; i < 3; i++){
             for(int j = 0 ; j < 3; j++){
